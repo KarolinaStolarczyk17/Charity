@@ -20,4 +20,5 @@ public class DonationService {
     public long sumOfDonations() {
         return donationRepository.count();
     }
+    public void addDonations(Donation donation){donationRepository.save(donation);}
 }

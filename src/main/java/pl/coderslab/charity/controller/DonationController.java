@@ -13,6 +13,9 @@ import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.repository.CategoryRepository;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
+import pl.coderslab.charity.service.CategoryService;
+import pl.coderslab.charity.service.DonationService;
+import pl.coderslab.charity.service.InstitutionService;
 
 import java.util.List;
 
@@ -21,18 +24,20 @@ import java.util.List;
 @AllArgsConstructor
 public class DonationController {
 
-    private final CategoryRepository categoryRepository;
-    private final InstitutionRepository institutionRepository;
-    private final DonationRepository donationRepository;
+    public final DonationService donationService;
+    public final CategoryService categoryService;
+    public final InstitutionService institutionService;
+
 
     @ModelAttribute("categories")
     public List<Category> categories(){
-        return categoryRepository.findAll();
+
+        return categoryService.getCategories();
     }
 
     @ModelAttribute("institutions")
     public List<Institution> institutions(){
-        return institutionRepository.findAll();
+        return institutionService.getInstitutions();
     }
 
     @GetMapping("/donate")
@@ -40,16 +45,22 @@ public class DonationController {
         model.addAttribute("donation", new Donation());
         return "donationForm";
     }
+//
+//    @GetMapping("/donateComplete")
+//    public String donateComplete(){
+//        return "donationComplete";
+//    }
+//
+//    @PostMapping("/donate")
+//    public String donationFormHandle(@ModelAttribute("donation") Donation donation){
+//        donation.setFulfilled(1);
+//        donationService.save(donation);
+//        return "redirect:/donateComplete";
+//    }
 
-    @GetMapping("/donateComplete")
-    public String donateComplete(){
-        return "donationComplete";
-    }
-
-    @PostMapping("/donate")
-    public String donationFormHandle(@ModelAttribute("donation") Donation donation){
-        donation.setFulfilled(1);
-        donationRepository.save(donation);
-        return "redirect:/donateComplete";
+    @PostMapping("/donation")
+    public String saveDonation(Donation donation) {
+        donationService.addDonations(donation);
+        return "redirect:/";
     }
 }
