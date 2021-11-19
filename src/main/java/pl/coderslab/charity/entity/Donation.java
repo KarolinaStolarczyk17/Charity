@@ -38,5 +38,5 @@ public class Donation {
     private String pickUpComment;
 
 
-//    private int Fulfilled;
+    private int Fulfilled;
 }

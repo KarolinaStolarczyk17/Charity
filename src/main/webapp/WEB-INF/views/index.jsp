@@ -14,32 +14,6 @@
     <%@ include file="header.jsp" %>
 </head>
 <body>
-<%--<header class="header--main-page">--%>
-<%--    <nav class="container container--70">--%>
-<%--        <ul class="nav--actions">--%>
-<%--            <li><a href="" class="btn btn--small btn--without-border">Zaloguj</a></li>--%>
-<%--            <li><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>--%>
-<%--        </ul>--%>
-
-<%--        <ul>--%>
-<%--            <li><a href="#" class="btn btn--without-border active">Start</a></li>--%>
-<%--            <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>--%>
-<%--            <li><a href="#" class="btn btn--without-border">O nas</a></li>--%>
-<%--            <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>--%>
-<%--            <li><a href="#" class="btn btn--without-border">Kontakt</a></li>--%>
-<%--        </ul>--%>
-<%--    </nav>--%>
-
-<%--    <div class="slogan container container--90">--%>
-<%--        <div class="slogan--item">--%>
-<%--            <h1>--%>
-<%--                Zacznij pomagać!<br/>--%>
-<%--                Oddaj niechciane rzeczy w zaufane ręce--%>
-<%--            </h1>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</header>--%>
-
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
@@ -86,7 +60,7 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="/register" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section class="about-us">
@@ -104,60 +78,57 @@
     <h2>Komu pomagamy?</h2>
 
     <!-- SLIDE 1 -->
-    <ul class="help--slides active" data-id="1">
+    <div class="help--slides active" data-id="1">
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
             Możesz sprawdzić czym się zajmują.</p>
 
 
 
 
-<%--                <ul class="help--slides-items">--%>
-<%--                    <c:forEach items="${institutions}" begin="0" end="${fn:length(institutions)}" step="2" varStatus="status">--%>
-<%--                        <li>--%>
-<%--                            <div class="col">--%>
-<%--                                <div class="title">Fundacja: ${institutions[status.index].name}</div>--%>
-<%--                                <div class="subtitle">Cel i misja: ${institutions[status.index].description}</div>--%>
-<%--                            </div>--%>
-<%--                            <c:choose>--%>
-<%--                                <c:when test="${status.index < (fn:length(institutions)/2 + 1)}">--%>
-<%--                                    <div class="col">--%>
-<%--                                        <div class="title">Fundacja: ${institutions[status.index+1].name}</div>--%>
-<%--                                        <div class="subtitle">Cel i misja: ${institutions[status.index+1].description}</div>--%>
-<%--                                    </div>--%>
-<%--                                </c:when>--%>
-<%--                            </c:choose>--%>
-<%--                        </li>--%>
-<%--                    </c:forEach>--%>
-<%--    </ul>--%>
+        <ul class="help--slides-items">
+            <c:forEach begin="0" end="${institutions.size()}" step="2" var="item">
 
-    <ul class="help--slides-items">
-        <li>
+                <li>
+                    <c:forEach items="${institutions}" var="institution" begin="${item}" end="${item + 1}">
+                        <div class="col">
+                            <div class="title">Fundacja ${institution.name}</div>
+                            <div class="subtitle">Cel i misja: ${institution.description}</div>
+                        </div>
+                    </c:forEach>
+                </li>
 
-                <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                </div>
-
-                <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                </div>
-            </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
-
-            </li>
-
+            </c:forEach>
         </ul>
-    </div>
+        </div>
+
+<%--    <ul class="help--slides-items">--%>
+<%--        <li>--%>
+
+<%--                <div class="col">--%>
+<%--                    <div class="title">Fundacja "Dbam o Zdrowie"</div>--%>
+<%--                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>--%>
+<%--                </div>--%>
+
+<%--                <div class="col">--%>
+<%--                    <div class="title">Fundacja "A kogo"</div>--%>
+<%--                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>--%>
+<%--                </div>--%>
+<%--            </li>--%>
+
+<%--            <li>--%>
+<%--                <div class="col">--%>
+<%--                    <div class="title">Fundacja “Dla dzieci"</div>--%>
+<%--                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>--%>
+<%--                </div>--%>
+<%--                <div class="col">--%>
+<%--                    <div class="title">Fundacja “Bez domu”</div>--%>
+<%--                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>--%>
+<%--                </div>--%>
+
+<%--            </li>--%>
+
+<%--        </ul>--%>
+
 
 </section>
 

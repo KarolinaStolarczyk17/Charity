@@ -43,7 +43,7 @@ public class DonationController {
     @GetMapping("/donate")
     public String donationForm(Model model) {
         model.addAttribute("donation", new Donation());
-        return "donationForm";
+        return "form";
     }
 //
 //    @GetMapping("/donateComplete")
