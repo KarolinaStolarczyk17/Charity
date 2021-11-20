@@ -39,4 +39,7 @@ public class Donation {
 
 
     private int Fulfilled;
+
+    @ManyToOne
+    private User user;
 }

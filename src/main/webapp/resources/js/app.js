@@ -211,7 +211,7 @@ function finishForm() {
     summaryInstitution.innerHTML = institutionName;
     summaryStreet.innerHTML = form.elements['street'].value;
     summaryCity.innerHTML = form.elements['city'].value;
-    // summaryZipcode.innerHTML = form.elements['zipCode'].value;
+    summaryZipcode.innerHTML = form.elements['zipCode'].value;
     summaryDate.innerHTML = form.elements['pickUpDate'].value;
     summaryTime.innerHTML = form.elements['pickUpTime'].value;
     summaryComment.innerHTML = form.elements['pickUpComment'].value;
