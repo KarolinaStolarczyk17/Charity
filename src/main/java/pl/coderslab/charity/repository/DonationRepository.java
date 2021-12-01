@@ -16,6 +16,6 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     @Query(value ="select * from donation where fulfilled = 1", nativeQuery = true)
     List<Donation> selectAllFulfilled();
 
-   @Query(value = "select * from donation where user_id = ?1 ORDER BY fulfilles DESC", nativeQuery = true)
+   @Query(value = "select * from donation where user_id = ?1 ORDER BY fulfilled DESC", nativeQuery = true)
     List<Donation> selectAllByUserId(Long id);
 }
